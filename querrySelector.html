@@ -26,13 +26,13 @@
     const heading = document.querySelector('h1');
     const paragraph = document.querySelector('p');
     const button = document.querySelector('#mybutton');
-    paragraph.style.color = 'darkred';
+    paragraph.style.color = 'red';
     paragraph.textContent = 'This is a new paragraph.'
     console.log(heading);
 
     button.addEventListener('click', function(){
         alert('button is clicked');
-        paragraph.style.color = 'darkgreen';
+        paragraph.style.color = 'green';
         paragraph.textContent = 'Button is clicked' ;
         heading.style.color = 'darkgreen';
     })
