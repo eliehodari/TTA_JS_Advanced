@@ -42,8 +42,10 @@
         const content1= document.querySelector('.content-1');
         const pinkButton = document.querySelector('#pink');
 
+        const removeBg = () => {
+            content1.classList.remove('bg-green-500' , 'bg-blue-500' , 'bg-pink-500' , 'bg-yellow-500') 
+        }
 
-        
         increaseButton.addEventListener('click' , ()=>{
             if(count <10){
                 count++;
@@ -65,22 +67,26 @@
         })
 
         greenButton.addEventListener('click' , () =>{
-            content1.classList.toggle('bg-green-500')
+            removeBg();
+            content1.classList.add('bg-green-500')
 
         });
 
         blueButton.addEventListener('click' , () =>{
-            content1.classList.toggle('bg-blue-500')
+            removeBg();
+            content1.classList.add('bg-blue-500')
 
         });
 
         yellowButton.addEventListener('click' , () =>{
-            content1.classList.toggle('bg-yellow-500')
+            removeBg();
+            content1.classList.add('bg-yellow-500')
 
         });
 
         pinkButton.addEventListener('click' , () =>{
-            content1.classList.toggle('bg-pink-500');
+            removeBg();
+            content1.classList.add('bg-pink-500');
         })
     </script>
 </body>
