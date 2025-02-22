@@ -16,6 +16,12 @@ const displayTasks = () => {
         const taskLinks = document.createElement('div');
         taskLinks.classList.add('task-links');
 
+        const updateButton = document.createElement('a');
+        updateButton.href = '#';
+        updateButton.textContent = 'Update';
+        updateButton.classList.add('text-blue-500' , 'mr-2');
+        taskLinks.appendChild(updateButton);
+
         const deleteButton = document.createElement('a');
         deleteButton.href = '#';
         deleteButton.textContent = 'Delete';
