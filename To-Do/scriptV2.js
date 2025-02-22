@@ -1,4 +1,5 @@
 let tasks = ["Buy Milk", "clean the room", "go to the gym"];
+let completedTasks = [];
 
 const displayTasks = () => {
     let taskDisplay = document.querySelector('#taskDisplay');
@@ -21,6 +22,14 @@ const displayTasks = () => {
 
 
         // create the update and delete buttons
+        const doneLink = document.createElement('a');
+        doneLink.href = '#';
+        doneLink.textContent = 'Mark as Done';
+        doneLink.classList.add('text-green-500' , 'mr-4');
+        doneLink.addEventListener('click', () => markAsDone(index));
+        taskLinks.appendChild(doneLink);
+
+
         const updateButton = document.createElement('a');
         updateButton.href = '#';
         updateButton.textContent = 'Update';
@@ -61,6 +70,14 @@ const addTask = () => {
     }
 };
 
+
+const markAsDone = (index) => {
+    const task = tasks.splice(index, 1)[0];
+    completedTasks.push(task);
+    saveTaskToLocalStorage();
+    displayTasks();
+}
+
  const editTask = (index) => {
     const updatedTask = prompt("Update your Tasks", tasks[index]);
     if(updatedTask && updatedTask.trim()  !== ""){
@@ -82,10 +99,16 @@ const deleteTask = (index) => {
 
 const loadTasksFromLocalStorage = () => {
     const storedTasks = localStorage.getItem('tasks');
+    const storedCompletedTasks = localStorage.getItem('completedTasks');
+
     if (storedTasks) {
         tasks = JSON.parse(storedTasks);
     }
     displayTasks(); 
+
+    if (storedTasks) {
+        completedTasks = JSON.parse(storedTasks);
+    }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
