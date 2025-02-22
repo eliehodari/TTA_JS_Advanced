@@ -21,8 +21,11 @@
             taskDisplay.innerHTML = '';
             tasks.forEach(task =>{
                 const taskItem = document.createElement('li');
-                taskItem.classList.add('bg-blue-200', 'p-2', 'm-2','rounde-lg', 'list-none')
+                taskItem.classList.add('bg-blue-200', 'p-2', 'm-2','rounded-lg', 'list-none');
                 taskItem.textContent = task;
+                taskItem.addEventListener('click', () => {
+                    alert(`You clicked on: ${task}`);
+                });
                 taskDisplay.appendChild(taskItem);
             })
         }
@@ -30,7 +33,7 @@
         const addTask = (task) => {
             tasks.push(task);
             console.log(`Successfully added ${task} to the list`);
-            // alert(`Successfully added ${task} to the list`); 
+            alert(`Successfully added ${task} to the list`);
             displayTasks();
         }
 
