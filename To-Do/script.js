@@ -12,14 +12,19 @@ let tasks = ["Buy Milk" , "clean the room" , "go to the gym"]; const displayTask
     })
 }
 
+const saveTaskToLocalStorage = () => {
+    localStorage.setItem('tasks' , JSON.stringify(tasks));
+}
+
 const addTask = () => {
     const newTaskInput = document.querySelector('#newTask');
     const newTask =  newTaskInput.value;
 
 
-    if(newTask.trim() !== ""){
+    if(newTask.trim( ) !== ""){
         tasks.push(newTask);
         newTaskInput.value = '';
+        saveTaskToLocalStorage();
         displayTasks();
     }else {
         alert('please enter a task')
@@ -28,4 +33,15 @@ const addTask = () => {
 
 const addTaskButton = document.querySelector('#addTaskButton');
 addTaskButton.addEventListener('click',addTask);
+
+const loadTasksFromLocalStorage = () => {
+    const storedTasks = localStorage.getItem('tasks');
+
+    if(storedTasks){
+        tasks = JSON.parse(storedTasks);
+        displayTasks();
+    }
+}
+
+loadTasksFromLocalStorage();
 displayTasks();
